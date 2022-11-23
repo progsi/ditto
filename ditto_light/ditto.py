@@ -139,7 +139,7 @@ def train_step(train_iter, model, optimizer, scheduler, hp):
             loss.backward()
         optimizer.step()
         scheduler.step()
-        if i % 10 == 0: # monitoring
+        if i % 2500 == 0: # monitoring
             print(f"step: {i}, loss: {loss.item()}")
         del loss
 

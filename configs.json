@@ -1,5 +1,21 @@
 [
     {
+    "name": "shs100k_yt_yt_stringkeywords",
+    "task_type": "classification",
+    "vocab": ["0", "1"],
+    "trainset": "data/shs100k_yt_yt/string_keywords/train.txt",
+    "validset": "data/shs100k_yt_yt/string_keywords/valid.txt",
+    "testset": "data/shs100k_yt_yt/string_keywords/test.txt"
+  },
+    {
+    "name": "shs100k_yt_yt",
+    "task_type": "classification",
+    "vocab": ["0", "1"],
+    "trainset": "data/shs100k_yt_yt/train.txt",
+    "validset": "data/shs100k_yt_yt/valid.txt",
+    "testset": "data/shs100k_yt_yt/test.txt"
+  },
+    {
     "name": "shs_youtube_base",
     "task_type": "classification",
     "vocab": ["0", "1"],
