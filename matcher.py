@@ -327,10 +327,28 @@ if __name__ == "__main__":
     # tune threshold
     threshold = tune_threshold(config, model, hp)
 
-    # run prediction
-    predict(hp.input_path, hp.output_path, config, model,
-            summarizer=summarizer,
-            max_len=hp.max_len,
-            lm=hp.lm,
-            dk_injector=dk_injector,
-            threshold=threshold)
+    # if input path corresponds to whole dir
+    if not os.path.isfile(hp.input_path):
+
+        filenames = os.listdir(hp.input_path)
+        print(f"Predicting for {filenames} files")
+
+        # predict for all files in input dir
+        for filename in filenames:
+
+            print(f"Predicting for file {filename}")
+            predict(os.path.join(hp.input_path, filename), os.path.join('output', 'matched_' + filename), config, model,
+                    summarizer=summarizer,
+                    max_len=hp.max_len,
+                    lm=hp.lm,
+                    dk_injector=dk_injector,
+                    threshold=threshold)
+
+    else:
+        # run single file prediction
+        predict(hp.input_path, hp.output_path, config, model,
+                summarizer=summarizer,
+                max_len=hp.max_len,
+                lm=hp.lm,
+                dk_injector=dk_injector,
+                threshold=threshold)
