@@ -176,11 +176,23 @@ def train(trainset, validset, testset, run_tag, hp):
                                  num_workers=0,
                                  collate_fn=padder)
 
+
+
+
     # initialize model, optimizer, and LR scheduler
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     model = DittoModel(device=device,
                        lm=hp.lm,
                        alpha_aug=hp.alpha_aug)
+
+    # load checkpoint if it is found
+    ckpt_path = os.path.join(hp.logdir, hp.task, 'model.pt')
+
+    if os.path.exists(ckpt_path):
+        print(f"Loading model checkpoint from: {ckpt_path}")
+        saved_state = torch.load(ckpt_path, map_location=lambda storage, loc: storage)
+        model.load_state_dict(saved_state['model'])
+
     model = model.cuda()
     optimizer = AdamW(model.parameters(), lr=hp.lr)
 

@@ -253,7 +253,6 @@ def tune_threshold(config, model, hp):
     return th
 
 
-
 def load_model(task, path, lm, use_gpu, fp16=True):
     """Load a model for a specific task.
 
@@ -331,7 +330,7 @@ if __name__ == "__main__":
     if not os.path.isfile(hp.input_path):
 
         filenames = os.listdir(hp.input_path)
-        print(f"Predicting for {filenames} files")
+        print(f"Predicting for {len(filenames)} files")
 
         # predict for all files in input dir
         for filename in filenames:
