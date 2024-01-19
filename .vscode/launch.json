@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+            //"args": ["--sbert", "--batch_size", "32", "--val_every", "5", "--loss", "triplet_loss", "--val_dataset_name", "shs100k2_val500"],
+            // "python": "/home/hachmeier/miniconda3/envs/torch2/bin/python"
+            "python": "/data/miniconda3/envs/torch21/bin/python"
+        
+        }
+    ]
+}
